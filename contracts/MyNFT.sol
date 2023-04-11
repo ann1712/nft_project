@@ -16,29 +16,43 @@ contract MyNFT is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
     bool whiteListMintOpen = false;
     uint256 maxSupply = 2;
     mapping (address => bool) public whiteList;
+    uint256[2] mintPrice = [0.01 ether, 0.02 ether];
+    uint256[2] maxRound = [1, 2]; // for dev
+    uint256[2] startTime = [1681233120, 1681319520];
+    uint public mintInterval = 1 days;
+    uint256[2] roundSold;
 
-    constructor() ERC721("MyNFT", "MNFT") {}
+    constructor(uint256 _maxSupply, uint256[2] memory _maxRound) 
+        ERC721("MyNFT", "MNFT") {
+
+        _maxSupply = maxSupply;
+        _maxRound = maxRound;
+    }
 
     function _baseURI() internal pure override returns (string memory) {
         return "https://uri.nftio/";
     }
 
     //OG round
-    function whiteListMint(address _addr) public payable {
-        require(whiteListMintOpen, "WhiteList Mint is closed!");
-        require(whiteList[_addr], "You'r not in WhiteList!");
-        require(totalSupply() < maxSupply, "All NFTs are Sold out !");
-        require(msg.value == 0.01 ether, "Not enough Funds");
+    function whiteListMint() public payable {
+        uint256 round = _getCurrentRound();
+        require(round == 0, "WhiteList Mint is not available!");
+        require(whiteList[msg.sender], "You'r not in WhiteList!");
+        require(roundSold[round] < maxRound[round], "All NFTs are Sold out !");
+        require(msg.value == mintPrice[round], "Not enough Funds");
         _mint();
+        roundSold[round]++;
 
     } 
 
     // Public round
     function publicMint() public payable {
-        require(publicMintOpen, "Public Mint is closed!");
-        require(totalSupply() < maxSupply, "All NFTs are Sold out !");
+        uint256 round = _getCurrentRound();
+        require(round == 1, "Public Mint is is not available!");
+        require(roundSold[round] < maxSupply, "All NFTs are Sold out !");
         require(msg.value == 0.01 ether, "Not enough Funds");
         _mint();
+        roundSold[round]++;
     }
 
     // Mint
@@ -48,10 +62,12 @@ contract MyNFT is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
         _safeMint(msg.sender, tokenId);
     }
 
-    //Modify round
-    function editRound(bool _publicMintOpen, bool _whiteListMintOpen) external onlyOwner {
-        publicMintOpen = _publicMintOpen;
-        whiteListMintOpen = _whiteListMintOpen;
+    // Get current Round
+    function _getCurrentRound() private view returns (uint256){
+        for(uint256 i = 0; i < 2; i++){
+            if(block.timestamp >= startTime[i] && block.timestamp < startTime[i] + mintInterval) return i;
+        }
+        return 2;
     }
 
     // Populate WhiteList
@@ -59,6 +75,12 @@ contract MyNFT is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
         for(uint256 i = 0; i< addresses.length; i++){
             whiteList[addresses[i]] = true;
         }
+    }
+
+    function withdraw(address _addr) external onlyOwner {
+        //get balance of contract
+        uint256 balance = address(this).balance;
+        payable(_addr).transfer(balance);
     }
 
     // The following functions are overrides required by Solidity.
