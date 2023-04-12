@@ -1,0 +1,45 @@
+{
+	"compiler": {
+		"version": "0.8.18+commit.87f61d96"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"details": "Collection of functions related to the address type",
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/HappyCat_flattened.sol": "Address"
+		},
+		"evmVersion": "paris",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/HappyCat_flattened.sol": {
+			"keccak256": "0x6713f11c517f825a1957da822b3988eec3755a4f8e39b5bebfac3d5869e93873",
+			"urls": [
+				"bzz-raw://3bd63b923a0ff2f485ddefcec2ee8974742105dc269db51c033dfb55175b2003",
+				"dweb:/ipfs/QmYeDFQVUxGU86ZLpjaWwSqX9dAYXtb3MemPzXNaqdHCmV"
+			]
+		}
+	},
+	"version": 1
+}

@@ -14,7 +14,7 @@ contract MyNFT is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
 
     bool publicMintOpen = false;
     bool whiteListMintOpen = false;
-    uint256 maxSupply = 2;
+    uint256 maxSupply = 3;
     mapping (address => bool) public whiteList;
     uint256[2] mintPrice = [0.01 ether, 0.02 ether];
     uint256[2] maxRound = [1, 2]; // for dev
@@ -24,9 +24,6 @@ contract MyNFT is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
 
     constructor(uint256 _maxSupply, uint256[2] memory _maxRound) 
         ERC721("MyNFT", "MNFT") {
-
-        _maxSupply = maxSupply;
-        _maxRound = maxRound;
     }
 
     function _baseURI() internal pure override returns (string memory) {
@@ -49,7 +46,7 @@ contract MyNFT is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
     function publicMint() public payable {
         uint256 round = _getCurrentRound();
         require(round == 1, "Public Mint is is not available!");
-        require(roundSold[round] < maxSupply, "All NFTs are Sold out !");
+        require(roundSold[round] < maxRound[round], "All NFTs are Sold out !");
         require(msg.value == 0.01 ether, "Not enough Funds");
         _mint();
         roundSold[round]++;
