@@ -1,28 +1,24 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.9;
+pragma solidity ^0.8.1;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-import "@openzeppelin/contracts/utils/Strings.sol";
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/utils/Counters.sol";
 
-contract HappyCat is ERC721{
-    using Strings for uint256;
+contract HappyCat is ERC721, ERC721Enumerable, Ownable {
 
-    string public uri = "ipfs/HappyCatUri/";
-
-    constructor(string memory name, string memory symbol) ERC721(name, symbol) {
-
+    constructor() ERC721("Happy Cat", "HPC") {
     }
 
-    function tokenURI(uint256 tokenId) public view virtual override returns (string memory){
-        require(_exists(tokenId), "Token ID is not available");
-        if(bytes(uri).length > 0){
-            return string(abi.encodePacked(uri, tokenId.toString()));
-        } else {
-            return "";
-        }
+    
+    
+    function _beforeTokenTransfer(address from, address to, uint256 tokenId, uint256 batchSize) internal override(ERC721, ERC721Enumerable){
+        super._beforeTokenTransfer(from, to, tokenId, batchSize);
     }
 
-    function mint(address to, uint256 tokenId) external {
-        _mint(to, tokenId);
+    function supportsInterface(bytes4 interfaceId) public view override (ERC721, ERC721Enumerable) returns (bool){
+        return super.supportsInterface(interfaceId);
     }
+
 }

@@ -7,7 +7,7 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
-contract MyNFT is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
+contract MyNFT is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable { 
     using Counters for Counters.Counter;
 
     Counters.Counter private _tokenIdCounter;
@@ -57,6 +57,8 @@ contract MyNFT is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
         uint256 tokenId = _tokenIdCounter.current();
         _tokenIdCounter.increment();
         _safeMint(msg.sender, tokenId);
+        string memory _tokenURI = tokenURI(tokenId);
+        _setTokenURI(tokenId, _tokenURI);
     }
 
     // Get current Round
