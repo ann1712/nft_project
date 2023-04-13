@@ -1,0 +1,15 @@
+{
+    "name": "1",
+    "description": "Plastic Rune",
+    "image_url": "https://github.com/ann1712/nft_project/raw/main/metadata/plastic.png",
+    "attributes": [
+        {
+          "trait_type": "rune", 
+          "value": "plastic"
+        }, 
+        {
+            "trait_type": "weight", 
+            "value": 630
+        }        
+      ]
+}

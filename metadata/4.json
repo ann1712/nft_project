@@ -1,0 +1,15 @@
+{
+    "name": "4",
+    "description": "Paranium Rune",
+    "image_url": "https://github.com/ann1712/nft_project/raw/main/metadata/paranium.png",
+    "attributes": [
+        {
+          "trait_type": "rune", 
+          "value": "paranium"
+        }, 
+        {
+            "trait_type": "weight", 
+            "value": 2200000
+        }        
+      ]
+}
