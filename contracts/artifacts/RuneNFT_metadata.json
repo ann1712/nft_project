@@ -6,7 +6,18 @@
 	"output": {
 		"abi": [
 			{
-				"inputs": [],
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_symbol",
+						"type": "string"
+					}
+				],
 				"stateMutability": "nonpayable",
 				"type": "constructor"
 			},
@@ -107,6 +118,25 @@
 			{
 				"inputs": [
 					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "MAX_SUPPLY_ROUND",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "address",
 						"name": "to",
 						"type": "address"
@@ -182,6 +212,13 @@
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "mintAll",
+				"outputs": [],
+				"stateMutability": "payable",
 				"type": "function"
 			},
 			{
@@ -303,6 +340,38 @@
 				"name": "setApprovalForAll",
 				"outputs": [],
 				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address[]",
+						"name": "_addr",
+						"type": "address[]"
+					}
+				],
+				"name": "setWhitelist",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "soldRound",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -505,9 +574,6 @@
 				"tokenOfOwnerByIndex(address,uint256)": {
 					"details": "See {IERC721Enumerable-tokenOfOwnerByIndex}."
 				},
-				"tokenURI(uint256)": {
-					"details": "See {IERC721Metadata-tokenURI}."
-				},
 				"totalSupply()": {
 					"details": "See {IERC721Enumerable-totalSupply}."
 				},
@@ -580,6 +646,14 @@
 			"urls": [
 				"bzz-raw://63a5e0bb5a7d182e0d0eef87033f78115eab791de3626a929bc98c157087880a",
 				"dweb:/ipfs/QmetkXAu2CJKS4qrZtEQPU8okAPwUwa6HL4XYwk8vrYMk8"
+			]
+		},
+		"@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol": {
+			"keccak256": "0x5c3501c1b70fcfc64417e9da5cc6a3597191baa354781e508e1e14cc0e50a038",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://899c87a849a94c848818d0afede6961d2c87665af1dd23a5c983e78981a65691",
+				"dweb:/ipfs/QmUeFDffQRDmX87FX3MRxN3bmpUxDTWpWLwPJzeAJ3yF6H"
 			]
 		},
 		"@openzeppelin/contracts/token/ERC721/extensions/IERC721Enumerable.sol": {
@@ -655,11 +729,11 @@
 			]
 		},
 		"contracts/RuneNFT.sol": {
-			"keccak256": "0x3f93212a82237773ebc172d3c1cbcb5491edee0a9be0a4c93a91677951a62729",
+			"keccak256": "0x7c01df5543fc59b58e798a41ec2dccd68602ae4360c4596636b6980c85f644db",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://55bee16fec264663cbd552d7b5cd44bdd81323e590b587e5076a1b156b685b23",
-				"dweb:/ipfs/QmPuZc6SaiNwFUkS5jgommHdSr4habUqcB4ycAHT7uFnca"
+				"bzz-raw://1a7c4d77de30506438c755c9349ab089e7423732ffaa841321f1a8886e98ffab",
+				"dweb:/ipfs/QmcDPoVp4SKHU1vm1uXPaLVRCFjHJc7Xy3Rj9KV12jowBc"
 			]
 		}
 	},
