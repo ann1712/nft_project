@@ -61,6 +61,13 @@ contract RuneNFT is ERC721, ERC721Enumerable, Ownable, ERC721URIStorage {
         _setTokenURI(tokenId, tokenUri);
     }
 
+    //Withdraw
+    function withdraw(address _addr) external onlyOwner(){
+        // Get balance of contract
+        uint256 balance = address(this).balance;
+        payable(_addr).transfer(balance);
+    }
+
     function tokenURI(uint256 tokenId) public view virtual override(ERC721,ERC721URIStorage) returns (string memory){
         require(_exists(tokenId), "ERC721Metadata: Nonexistent Token Id");
 

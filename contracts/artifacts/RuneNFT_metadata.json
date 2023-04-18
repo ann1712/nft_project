@@ -516,6 +516,19 @@
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_addr",
+						"type": "address"
+					}
+				],
+				"name": "withdraw",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -729,11 +742,11 @@
 			]
 		},
 		"contracts/RuneNFT.sol": {
-			"keccak256": "0x7c01df5543fc59b58e798a41ec2dccd68602ae4360c4596636b6980c85f644db",
+			"keccak256": "0x05dc176aa5a40b00a12c815b0ccc02a64872197c2579257150141a6e333152ec",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://1a7c4d77de30506438c755c9349ab089e7423732ffaa841321f1a8886e98ffab",
-				"dweb:/ipfs/QmcDPoVp4SKHU1vm1uXPaLVRCFjHJc7Xy3Rj9KV12jowBc"
+				"bzz-raw://59ac245e252d8ce4c23060d68b8ae8950a0e39929bf22e388e232a70c37f1faf",
+				"dweb:/ipfs/QmSkbmP9ZJKdtyDnMkJNQpeub3vicMJ8fyL6PUCfXptWrU"
 			]
 		}
 	},
